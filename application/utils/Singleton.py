@@ -2,9 +2,7 @@ class Singleton:
 
     def __init__(self, decorated):
         self._decorated = decorated
-        print decorated
-    
-    # Creates exactly one instance of the given object
+
     def Instance(self):
         try:
             return self._instance

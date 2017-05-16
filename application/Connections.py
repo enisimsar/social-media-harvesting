@@ -1,6 +1,7 @@
+from __future__ import print_function
 import pymongo
 import psycopg2
-from utils.Singleton import Singleton
+from application.utils.Singleton import Singleton
 
 @Singleton
 class Connection:
@@ -11,13 +12,14 @@ class Connection:
 
     def __init__(self):
         try:
-            # Mongo Auth 
-            self.MongoDBClient = pymongo.MongoClient('')
+            self.MongoDBClient = pymongo.MongoClient('') # Please enter your mongo database
             self.db = self.MongoDBClient.openMakerdB
-            # PostGreSQL Auth
-            self.PostGreSQLConnect = psycopg2.connect("")
+            self.newsdB = self.MongoDBClient.newsdB
+            self.feedDB = self.MongoDBClient.feedDB
+            self.infDB = self.MongoDBClient.influenceRanks
+            self.PostGreSQLConnect = psycopg2.connect("") # Please enter your postgresql database
             self.cur = self.PostGreSQLConnect.cursor()
-            print "new connection"
+            print("new connection")
         except Exception as e:
-            print e
-            print "I am unable to connect to the database"
+            print(e)
+            print("I am unable to connect to the database")

@@ -1,8 +1,10 @@
-from addTrack import AddTrack
+from addAlert import AddAlert
 from app import webserverInit
-from logic import getAllAlertList, setupServer
+from logic import getAllRunningAlertList
+import sys
+reload(sys)
+sys.setdefaultencoding('utf-8')
 
-mainT = AddTrack()
-mainT.setup(getAllAlertList())
-setupServer()
+mainT = AddAlert()
+mainT.setup(getAllRunningAlertList())
 webserverInit(mainT)

@@ -1,9 +1,6 @@
 import tweepy
 import json
 from tweepy import OAuthHandler
-import sys
-reload(sys)
-sys.setdefaultencoding('utf8')
 
 
 # Accessing Twitter API
@@ -14,7 +11,7 @@ access_secret = ""
 
 auth = OAuthHandler(consumer_key, consumer_secret)
 auth.set_access_token(access_token, access_secret)
-api = tweepy.API(auth, wait_on_rate_limit=True)
+api = tweepy.API(auth, wait_on_rate_limit=True, wait_on_rate_limit_notify=True)
 
 def getTweets(keywords, languages):
     tweets = []
